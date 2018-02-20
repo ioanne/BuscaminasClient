@@ -49,7 +49,7 @@ def chequear(id_buscaminas, id_partida, x, y):
 
     req = requests.post('http://127.0.0.1:5555/partida/{}/chequear_casillero/x/{}/y/{}'.format(id_partida, x, y))
     if req.ok:
-        return redirect(url_for('juego', id_buscaminas))
+        return redirect(url_for('juego', id_buscaminas=id_buscaminas))
 
     else:
         return 'Error'
