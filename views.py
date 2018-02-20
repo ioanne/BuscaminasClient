@@ -59,8 +59,8 @@ def chequear(id_buscaminas, id_partida, x, y):
 
 @app.route('/game-over')
 def game_over():
-    return "Game over"
+    return render_template('game_over.html')
 
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5000)
+    app.run(debug=True, port=5000)
