@@ -40,9 +40,9 @@ def juego(id_buscaminas):
 
     req = requests.get('http://127.0.0.1:5555/partida/{}'.format(id_buscaminas))
     if req.ok:
-        tablero = req.json()
+        filas = req.json()
 
-    return render_template('juego.html', tablero=tablero['Tablero'])
+    return render_template('juego.html', filas=filas['Filas'])
 
 if __name__ == '__main__':
     app.run(debug=False, port=5000)
