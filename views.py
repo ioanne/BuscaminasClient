@@ -43,7 +43,7 @@ def juego(id_buscaminas):
         filas = req.json()
     if filas['game_over'] == True:
         return redirect(url_for('game_over'))
-        
+
     return render_template('juego.html', filas=filas['Filas'], id_partida=filas['Partida'], id_buscaminas=id_buscaminas)
 
 
@@ -57,7 +57,7 @@ def chequear(id_buscaminas, id_partida, x, y):
     else:
         return 'Error'
 
-@app.route('game-over')
+@app.route('/game-over')
 def game_over():
     return "Game over"
 

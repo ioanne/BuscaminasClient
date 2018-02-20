@@ -8,11 +8,19 @@
     {% for fila in filas %}
         <div style="width: 100%;">
             {% for celda in fila['celdas'] %}
-<a href="{{url_for('chequear', id_buscaminas=id_buscaminas, id_partida=id_partida, x=celda['nro_celda'], y=fila['nro_fila']) }}"> 
-            <div style="width: 50px; background-color:darkgray; height: 50px; border: 1px solid black; float: left;" title="{{ celda['nro_celda']  }},{{ fila['nro_fila'] }}">
-                            <span title="({{ celda['nro_celda'] }}, {{ fila['nro_fila'] }}"></span>
-                </div>
+
+            {% if celda['estado'] != 1 %}
+        <a href="{{url_for('chequear', id_buscaminas=id_buscaminas, id_partida=id_partida, x=celda['nro_celda'], y=fila['nro_fila']) }}"> 
+        <div style="width: 50px; background-color:darkgray; height: 50px; border: 1px solid black; float: left;" title="{{ celda['nro_celda']  }},{{ fila['nro_fila'] }}">
+            {% else %}
+            
+        <div style="width: 50px; background-color:white; height: 50px; border: 1px solid black; float: left;" title="{{ celda['nro_celda']  }},{{ fila['nro_fila'] }}">
+            {% endif %}            
+            <span title="({{ celda['nro_celda'] }}, {{ fila['nro_fila'] }}"></span>
+        </div>
+            {% if celda['estado'] != 1 %}
             </a>
+            {% endif %}
 
 
             {% endfor %}
