@@ -41,8 +41,11 @@ def juego(id_buscaminas):
     req = requests.get('http://127.0.0.1:5555/partida/{}'.format(id_buscaminas))
     if req.ok:
         filas = req.json()
-
+    if filas['game_over'] == True:
+        return redirect(url_for('game_over'))
+        
     return render_template('juego.html', filas=filas['Filas'], id_partida=filas['Partida'], id_buscaminas=id_buscaminas)
+
 
 @app.route('/juego/buscamina/<int:id_buscaminas>/partida/<int:id_partida>/<int:x>/<int:y>')
 def chequear(id_buscaminas, id_partida, x, y):
@@ -53,6 +56,10 @@ def chequear(id_buscaminas, id_partida, x, y):
 
     else:
         return 'Error'
+
+@app.route('game-over')
+def game_over():
+    return "Game over"
 
 
 if __name__ == '__main__':
