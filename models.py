@@ -12,6 +12,11 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
+class Buscaminas(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    cantidad_fila = db.Column(db.Integer)
+    cantidad_celda = db.Column(db.Integer)
+    cantidad_minas = db.Column(db.Integer)
 
 
 if __name__ == '__main__':
