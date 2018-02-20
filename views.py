@@ -42,7 +42,18 @@ def juego(id_buscaminas):
     if req.ok:
         filas = req.json()
 
-    return render_template('juego.html', filas=filas['Filas'])
+    return render_template('juego.html', filas=filas['Filas'], id_partida=filas['Partida'], id_buscaminas=id_buscaminas)
+
+@app.route('/juego/buscamina/<int:id_buscaminas>/partida/<int:id_partida>/<int:x>/<int:y>')
+def chequear(id_buscaminas, id_partida, x, y):
+
+    req = requests.post('http://127.0.0.1:5555/partida/{}/chequear_casillero/x/{}/y/{}'.format(id_partida, x, y))
+    if req.ok:
+        # return redirect(url_for(juego(id_buscaminas)))
+        
+    else:
+        return 'Error'
+
 
 if __name__ == '__main__':
     app.run(debug=False, port=5000)
