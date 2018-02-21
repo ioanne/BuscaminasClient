@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from wtforms import Form
 from wtforms import IntegerField, validators, SubmitField
 
 class BuscaminasForm(Form):
